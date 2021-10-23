@@ -5,12 +5,13 @@
   "license": "MIT",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "@parcel/transformer-sass": "^2.0.0",
     "parcel": "^2.0.0-rc.0",
-    "sass": "^1.26.7"
+    "sass": "^1.43.3"
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "elliptic": "^6.5.4",
     "express": "^4.17.1"
   }
 }
