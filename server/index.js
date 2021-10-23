@@ -25,17 +25,6 @@ for (let i = 0; i < 4; i++) {
     GOD_ADDRESS = pubkey
   }
 }
-// const publicKey = key.getPublic().encode('hex');
-// console.log({
-//   privateKey: key.getPrivate().toString(16),
-//   publicX: key.getPublic().x.toString(16),
-//   publicY: key.getPublic().y.toString(16),
-// });
-// const balances = {
-//   "1": 100,
-//   "2": 50,
-//   "3": 75,
-// }
 
 app.get('/balance/:address', (req, res) => {
   const { address } = req.params;
@@ -54,15 +43,12 @@ app.get('/balance/:address', (req, res) => {
 app.post('/send', (req, res) => {
   const { sender, recipient, amount, signature } = req.body;
   console.log({sender:sender})
-  // console.log(balances)
   let publicKey = balances[sender]["public"]
-  // console.log({publicKey:publicKey})
   const key = ec.keyFromPublic(publicKey, 'hex');
   const txmsg = sender + "" + amount + "" + recipient;
   const msgHash = SHA256(txmsg);
   console.log({msgHash:msgHash, signature:signature})
   const verified = key.verify(msgHash, signature)
-  // const verified = true
   console.log({ verification: verified });
   if (!verified) {
     console.log("UNVERIFIED TRANSACTION, SENDERS FUNDS ARE BEING CONFISCATED")
